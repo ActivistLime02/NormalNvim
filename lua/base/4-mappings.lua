@@ -132,8 +132,8 @@ if not is_android then
   -- only useful when the option clipboard is commented on ./1-options.lua
   maps.n["<C-y>"] = { '"+y<esc>', desc = "Copy to cliboard" }
   maps.x["<C-y>"] = { '"+y<esc>', desc = "Copy to cliboard" }
-  maps.n["<C-d>"] = { '"+y<esc>dd', desc = "Copy to clipboard and delete line" }
-  maps.x["<C-d>"] = { '"+y<esc>dd', desc = "Copy to clipboard and delete line" }
+  -- maps.n["<C-d>"] = { '"+y<esc>dd', desc = "Copy to clipboard and delete line" }
+  -- maps.x["<C-d>"] = { '"+y<esc>dd', desc = "Copy to clipboard and delete line" }
   maps.n["<C-p>"] = { '"+p<esc>', desc = "Paste from clipboard" }
 end
 
