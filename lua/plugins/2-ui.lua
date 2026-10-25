@@ -28,6 +28,19 @@ local is_android = vim.fn.isdirectory('/data') == 1 -- true if on android
 
 return {
 
+  -- catppuccin [theme]
+  -- https://github.com/catppuccin/nvim
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      flavour = "frappe",
+      transparent_background = true,
+    },
+  },
+
   --  tokyonight [theme]
   --  https://github.com/folke/tokyonight.nvim
   {
