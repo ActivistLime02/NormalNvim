@@ -1311,7 +1311,7 @@ if is_available("markdown-preview.nvim") or is_available("markmap.nvim") or is_a
 end
 
 -- [neural] -----------------------------------------------------------------
-if is_available("neural") or is_available("copilot") then
+if is_available("neural") then
   maps.n["<leader>a"] = {
     function() require("neural").prompt() end,
     desc = "Ask chatgpt",

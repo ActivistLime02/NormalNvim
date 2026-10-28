@@ -24,7 +24,6 @@
 --       -> cmp-nvim-path                  [auto completion path]
 --       -> cmp-nvim-lsp                   [auto completion lsp]
 --       -> cmp-luasnip                    [auto completion snippets]
---       -> cmp-copilot                    [auto completion copilot]
 
 local utils = require("base.utils")
 
@@ -460,7 +459,6 @@ return {
         { path = "markdown-preview.nvim", mods = { "mkdp" } }, -- has vimscript
         { path = "markmap.nvim", mods = { "markmap" } },
         { path = "neural", mods = { "neural" } },
-        { path = "copilot", mods = { "copilot" } },
         { path = "guess-indent.nvim", mods = { "guess-indent" } },
         { path = "compiler.nvim", mods = { "compiler" } },
         { path = "overseer.nvim", mods = { "overseer", "lualine", "neotest", "resession", "cmp_overseer" } },
@@ -468,7 +466,6 @@ return {
         { path = "nvim-nio", mods = { "nio" } },
         { path = "nvim-dap-ui", mods = { "dapui" } },
         { path = "cmp-dap", mods = { "cmp_dap" } },
-        { path = "cmp-copilot", mods = { "cmp_copilot" } },
         { path = "mason-nvim-dap.nvim", mods = { "mason-nvim-dap" } },
 
         { path = "one-small-step-for-vimkind", mods = { "osv" } },
@@ -506,7 +503,6 @@ return {
     dependencies = {
       { "hrsh7th/cmp-nvim-lsp" },
       { "saadparwaiz1/cmp_luasnip"},
-      { "zbirenbaum/copilot-cmp", opts = {} } ,
       { "hrsh7th/cmp-buffer"} ,
       { "hrsh7th/cmp-path" },
       { "onsails/lspkind.nvim" },
@@ -647,7 +643,6 @@ return {
           { name = "nvim_lsp", priority = 1000 },
           { name = "lazydev",  priority = 850 },
           { name = "luasnip",  priority = 750 },
-          { name = "copilot",  priority = 600 },
           { name = "buffer",   priority = 500 },
           { name = "path",     priority = 250 },
         },

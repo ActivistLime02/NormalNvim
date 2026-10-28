@@ -616,7 +616,6 @@ return {
         Boolean = "⊨",
         Class = "󰌗",
         Constructor = "",
-        Copilot = "",
         Key = "󰌆",
         Namespace = "󰅪",
         Null = "NULL",

@@ -21,7 +21,6 @@
 
 --       ## ARTIFICIAL INTELLIGENCE
 --       -> neural                         [chatgpt code generator]
---       -> copilot                        [github code suggestions]
 --       -> guess-indent                   [guess-indent]
 
 --       ## COMPILER
@@ -340,19 +339,6 @@ return {
         },
       }
     end,
-  },
-
-  --  copilot [github code suggestions]
-  --  https://github.com/zbirenbaum/copilot.lua
-  --  Write to get AI suggestion for your code on the fly.
-  --
-  --  NOTE: This plugin is disabled by default.
-  --        To enable it run ':Copilot auth'
-  --        and login using your GitHub account.
-  {
-    "zbirenbaum/copilot.lua",
-    event = "User BaseDefered", -- Ensure it loads before mason-lspconfig.
-    opts = {},
   },
 
   -- [guess-indent]
