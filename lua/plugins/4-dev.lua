@@ -37,6 +37,7 @@
 
 --       ## LANGUAGE IMPROVEMENTS
 --       -> guttentags_plus                [auto generate C/C++ tags]
+--       -> flutter-tools.nvim             [flutter lsp, run and debug]
 
 local is_windows = vim.fn.has('win32') == 1 -- true if on windows
 
@@ -579,36 +580,7 @@ return {
       }
 
       -- Dart / Flutter
-      dap.adapters.dart = {
-        type = 'executable',
-        command = vim.fn.stdpath('data') .. '/mason/bin/dart-debug-adapter',
-        args = { 'dart' }
-      }
-      dap.adapters.flutter = {
-        type = 'executable',
-        command = vim.fn.stdpath('data') .. '/mason/bin/dart-debug-adapter',
-        args = { 'flutter' }
-      }
-      dap.configurations.dart = {
-        {
-          type = "dart",
-          request = "launch",
-          name = "Launch dart",
-          dartSdkPath = "/opt/flutter/bin/cache/dart-sdk/", -- ensure this is correct
-          flutterSdkPath = "/opt/flutter",                  -- ensure this is correct
-          program = "${workspaceFolder}/lib/main.dart",     -- ensure this is correct
-          cwd = "${workspaceFolder}",
-        },
-        {
-          type = "flutter",
-          request = "launch",
-          name = "Launch flutter",
-          dartSdkPath = "/opt/flutter/bin/cache/dart-sdk/", -- ensure this is correct
-          flutterSdkPath = "/opt/flutter",                  -- ensure this is correct
-          program = "${workspaceFolder}/lib/main.dart",     -- ensure this is correct
-          cwd = "${workspaceFolder}",
-        }
-      }
+      -- Configured by flutter-tools.nvim (see LANGUAGE IMPROVEMENTS).
 
       -- Kotlin
       -- Kotlin projects have very weak project structure conventions.
@@ -827,7 +799,7 @@ return {
       return {
         -- your neotest config here
         adapters = {
-          require("neotest-dart"),
+          require("neotest-dart")({ command = "fvm flutter" }),
           require("neotest-dotnet"),
           require("neotest-elixir"),
           require("neotest-golang"),
@@ -908,6 +880,34 @@ return {
         end,
       })
     end,
+  },
+
+  -- flutter-tools.nvim [flutter lsp, run and debug]
+  -- https://github.com/nvim-flutter/flutter-tools.nvim
+  -- Starts dartls, runs the app with hot reload on save, and registers
+  -- the nvim-dap configs using the project's fvm sdk (.fvm/flutter_sdk).
+  -- NOTE: Don't install dartls or dart-debug-adapter with mason.
+  {
+    "nvim-flutter/flutter-tools.nvim",
+    ft = "dart",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "stevearc/dressing.nvim",
+      "mfussenegger/nvim-dap",
+    },
+    opts = {
+      fvm = true,
+      debugger = { enabled = true },
+      widget_guides = { enabled = true },
+      closing_tags = { enabled = true },
+      dev_log = { enabled = true, open_cmd = "botright 15split" },
+      lsp = {
+        settings = {
+          showTodos = true,
+          completeFunctionCalls = true,
+        },
+      },
+    },
   },
 
 } -- end of return

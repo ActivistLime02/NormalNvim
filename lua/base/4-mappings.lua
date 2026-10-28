@@ -1223,6 +1223,20 @@ if is_available("nvim-coverage") then
   }
 end
 
+-- flutter-tools.nvim [flutter] ---------------------------------------------
+if is_available("flutter-tools.nvim") then
+  maps.n["<leader>F"] = { desc = "Flutter" }
+  maps.n["<leader>Fr"] = { "<cmd>FlutterRun<cr>", desc = "Run" }
+  maps.n["<leader>Fq"] = { "<cmd>FlutterQuit<cr>", desc = "Quit" }
+  maps.n["<leader>Fh"] = { "<cmd>FlutterReload<cr>", desc = "Hot reload" }
+  maps.n["<leader>FR"] = { "<cmd>FlutterRestart<cr>", desc = "Hot restart" }
+  maps.n["<leader>Fd"] = { "<cmd>FlutterDevices<cr>", desc = "Devices" }
+  maps.n["<leader>Fe"] = { "<cmd>FlutterEmulators<cr>", desc = "Emulators" }
+  maps.n["<leader>Fo"] = { "<cmd>FlutterOutlineToggle<cr>", desc = "Outline" }
+  maps.n["<leader>Fl"] = { "<cmd>FlutterLogToggle<cr>", desc = "Log" }
+  maps.n["<leader>Ft"] = { "<cmd>FlutterDevTools<cr>", desc = "DevTools" }
+end
+
 -- Extra - nodejs testing commands
 maps.n["<leader>Ta"] = {
   function() vim.cmd("TestNodejs") end,
