@@ -14,6 +14,7 @@
 --       -> packages
 --       -> buffers/tabs                       [buffers]
 --       -> ui toggles                         [ui]
+--       -> centered scrolling
 --       -> shifted movement keys
 --       -> cmdline autocompletion
 --       -> special cases
@@ -467,6 +468,22 @@ end
 if is_available("mini.animate") then
   maps.n["<leader>uA"] = { ui.toggle_animations, desc = "Animations [g]" }
 end
+
+-- centered scrolling -------------------------------------------------------
+-- Disable mini.animate during the scroll, otherwise its animation and the
+-- 'zz' fight each other and the view sometimes only moves one line.
+local function scroll_and_center(key)
+  return function()
+    vim.g.minianimate_disable = true
+    local count = vim.v.count > 0 and vim.v.count or ""
+    vim.cmd("normal! " .. count .. vim.keycode(key) .. "zz")
+    vim.g.minianimate_disable = false
+  end
+end
+maps.n["<C-d>"] = { scroll_and_center("<C-d>"), desc = "Scroll down and center" }
+maps.n["<C-u>"] = { scroll_and_center("<C-u>"), desc = "Scroll up and center" }
+maps.x["<C-d>"] = { scroll_and_center("<C-d>"), desc = "Scroll down and center" }
+maps.x["<C-u>"] = { scroll_and_center("<C-u>"), desc = "Scroll up and center" }
 
 -- shifted movement keys ----------------------------------------------------
 maps.n["<S-Down>"] = {
