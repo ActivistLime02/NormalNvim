@@ -347,7 +347,7 @@ return {
   -- It just set the buffer options to tabluate in a certain way.
   {
     "NMAC427/guess-indent.nvim",
-    event = "User BaseFile",
+    event = { "BufReadPost", "BufNewFile" },
     opts = {}
   },
 
